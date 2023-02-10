@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end  
   root "main#index", as: 'home'
   root "categories#index"
-  root "operations#index"
+  #root "operations#index"
   
   #get 'operations/:id', as: 'operations#index'
 
