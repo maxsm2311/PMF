@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :categories do
-    resources :operations
-  end  
+   
   root "main#index", as: 'home'
   root "categories#index"
   #root "operations#index"
@@ -15,6 +13,9 @@ Rails.application.routes.draw do
   get 'reports/report_by_dates'
   get 'main/index'
   
+  resources :categories do
+    resources :operations
+  end 
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

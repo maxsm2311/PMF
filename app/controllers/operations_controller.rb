@@ -13,12 +13,13 @@ class OperationsController < ApplicationController
 
   # GET /operations/new
   def new
-    #@category = Category.find(params[:category_id])
+    @category = Category.find(params[:category_id])
     @operation = @category.operations.build
   end
 
   # GET /operations/1/edit
   def edit
+    @categories = Category.all.map { |categories| [categories.name, categories.id]}
   end
 
   # POST /operations or /operations.json
