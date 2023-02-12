@@ -4,7 +4,7 @@ class OperationsController < ApplicationController
 
   # GET /operations or /operations.json
   def index
-    @operations = @category.operations
+    @operations = @category.operations.page(params[:page])
   end
 
   # GET /operations/1 or /operations/1.json

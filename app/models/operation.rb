@@ -4,4 +4,6 @@ class Operation < ApplicationRecord
   validates :odate, presence: true
   validates :description, presence: true
   validates :category, presence: true
+
+  paginates_per 4
 end
