@@ -9,4 +9,16 @@
     <%= category.description %>
   </p>
 
+  <ul>
+    <li>
+      <span class="dropdown-item"><%= link_to "operations", category_operations_path(category) %></span>
+        <li>
+      <span class="dropdown-item"><%= link_to "new operation", new_category_operation_path(category) %></span>
+    </li>
+  </ul> 
+
 </div>
+
+
+
+
