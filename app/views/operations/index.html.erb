@@ -8,7 +8,7 @@
   <% @operations.each do |operation| %>
     <%= render operation %>
     <p>
-      <%= link_to "Show this operation", [@category] %>
+      <%= link_to "Show this operation", [@category, operation] %>
     </p>
   <% end %>
 </div>
