@@ -5,5 +5,5 @@ class Operation < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  paginates_per 4
+  paginates_per 3
 end
