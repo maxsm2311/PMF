@@ -1,22 +1,10 @@
-<div id="<%= dom_id operation %>">
-  <p>
-    <strong>Amount:</strong>
-    <%= operation.amount %>
-  </p>
-
-  <p>
-    <strong>Odate:</strong>
-    <%= operation.odate %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= operation.description %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= operation.category_id %>
-  </p>
-
-</div>
+<div class="card border-dark mb-3" style="max-width: 100rem;">
+  <div id="<%= dom_id operation %>">
+  <div class="card text-bg-secondary mb-3" style="max-width: 100rem;">
+  <div class="card-header">Amount: <%= operation.amount %></div>
+  <div class="card-header">Odate: <%= operation.odate %></div>
+  <div class="card-header">Description: <%= operation.description %></div>
+  <div class="card-header">Category: <%= operation.category_id %></div>
+  </div>
+  </div>
+  </div>

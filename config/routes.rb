@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
    
   root "main#index", as: 'home'
-  root "categories#index"
+  #root "categories#index"
   #root "operations#index"
   
   #get 'operations/:id', as: 'operations#index'
 
 
-  get 'category/:id', to: 'category#index'
+  #get 'category/:id', to: 'category#index'
   get 'reports/index'
   get 'reports/report_by_category'
   get 'reports/report_by_dates'

@@ -9,14 +9,13 @@
     <%= category.description %>
   </p>
 
-  <ul>
-    <li>
-      <span class="dropdown-item"><%= link_to "operations", category_operations_path(category) %></span>
-        <li>
-      <span class="dropdown-item"><%= link_to "new operation", new_category_operation_path(category) %></span>
-    </li>
-  </ul> 
+  
+</div>
 
+<div class="card text-bg-dark mb-5" style="max-width: 100rem;">
+  <h3 class="card-header">Name: <%= category.name %></h3>
+    <h5 class="card-header">Description: <%= category.description %></h5>  
+</div>
 </div>
 
 
