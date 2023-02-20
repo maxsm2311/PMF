@@ -1,2 +1,60 @@
-<h1>Reports#report_by_category</h1>
-<p>Find me in app/views/reports/report_by_category.html.erb</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<h1>Report_by_category</h1>
+<canvas id="myChart" width="600" height="400"></canvas>
+<script>
+	const ctx = document.getElementById('myChart').getContext('2d');
+	const data = {
+  labels: <%= raw @name %>,
+  datasets: [{
+    label: 'My First Dataset',
+    data: <%= @expenses %>,
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+const config = {
+  type: 'bar',
+  data: data,
+  options: {
+		responsive: false
+	},
+};
+
+const myChart = new Chart(ctx, config);
+</script>
+
+
+<table class="table table-striped">>
+  <thead>
+    <tr>
+      <th>Category Name</th>
+      <th>Expenses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @name.each_with_index do |name, index| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= @expenses[index] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

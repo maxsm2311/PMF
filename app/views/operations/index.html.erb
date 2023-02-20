@@ -8,12 +8,14 @@
 <div id="operations">
   <% @operations.each do |operation| %>
     <%= render operation %>
+    <div class="button-container">
     <p>
-      <%= link_to "Show this operation", [@category, operation] %>
-    </p>
+      <%= link_to "Show", [@category, operation], class: 'btn btn-primary', style: 'background-color: rgb(108,117,125);' %>
+      
+    </p></div>
   <% end %>
-</div>
+  <%= link_to "New", new_category_operation_path(@category), class: 'btn btn-primary', style: 'background-color: rgb(108,117,125);' %>
 
-<%= link_to "New operation", new_category_operation_path(@category) %>
 
 <%= paginate @operations %>
+

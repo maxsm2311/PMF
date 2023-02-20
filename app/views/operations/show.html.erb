@@ -3,8 +3,12 @@
 <%= render @operation %>
 
 <div>
-  <%= link_to "Edit this operation", edit_category_operation_path(@category, @operation) %> |
-  <%= link_to "Back to operations", category_operations_path(@category) %>
-
-  <%= button_to "Destroy this operation", [@category, @operation], method: :delete %>
+<div class="button-container">
+  <%= button_to 'Del ', [@category, @operation], method: :delete, class: 'btn btn-primary', style: 'background-color: rgb(108,117,125);' %>
+  <%= link_to 'Edit', edit_category_operation_path(@category, @operation), class: 'btn btn-primary', style: 'background-color: rgb(108,117,125);' %>
+       <%= link_to 'Back', category_operations_path(@category), class: 'btn btn-primary', style: 'background-color: rgb(108,117,125);' %>
 </div>
+</div>
+
+
+

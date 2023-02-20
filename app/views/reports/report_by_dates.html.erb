@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<h1>Reports#report_by_dates</h1>
+<h1>Report_by_dates</h1>
 <canvas id="myChart" width="600" height="400"></canvas>
 <script>
 	const ctx = document.getElementById('myChart').getContext('2d');
@@ -24,6 +24,15 @@ const config = {
 
 const myChart = new Chart(ctx, config);
 </script>
+
+
+<%= form_tag report_by_dates_path, method: :get do %>
+  <%= label_tag :start_date, "Start date" %>
+  <%= text_field_tag :start_date, nil, type: 'date' %>
+  <%= label_tag :end_date, "End date" %>
+  <%= text_field_tag :end_date, nil, type: 'date' %>
+  <%= submit_tag "Generate report" %>
+<% end %>
 
 
 

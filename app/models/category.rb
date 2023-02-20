@@ -4,4 +4,6 @@ class Category < ApplicationRecord
   validates :description, presence: true
 
   paginates_per 3
+
+  
 end

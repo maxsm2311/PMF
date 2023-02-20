@@ -1,0 +1,42 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .pagination .active a {
+    background-color: rgb(108,117,125)
+  } 
+
+  .footer {
+  	text-align: center;
+  	padding: 3px;
+  	background-color: rgb(108,117,125);
+  	color: white;
+		}
+
+
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #5e5e5e;
+  padding: 20px;
+}
+
+main {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+button:focus {
+  outline: none;
+}
+
