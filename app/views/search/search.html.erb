@@ -1,0 +1,42 @@
+
+
+<h2>Search Results for '<%= @search_term %>'</h2>
+
+<h2>Результати пошуку</h2>
+
+<h3>Категорії</h3>
+<% if @categories.any? %>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Категорії не знайдено</p>
+<% end %>
+
+<h3>Операції</h3>
+<% if @operations.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Назва категорії</th>
+        <th>Сума</th>
+        <th>Дата</th>
+        <th>Характеристики</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @operations.each do |operation| %>
+        <tr>
+          <td><%= operation.category.name %></td>
+          <td><%= operation.amount %></td>
+          <td><%= operation.odate.strftime("%Y-%m-%d") %></td>
+          <td><%= operation.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Операції не знайдено</p>
+<% end %>
