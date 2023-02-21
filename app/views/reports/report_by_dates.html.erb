@@ -1,5 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<h1>Report by dates</h1>
+<h1>Report_by_dates</h1>
 <canvas id="myChart" width="600" height="400"></canvas>
 <script>
   const dates = <%= @operations.map { |operation| operation.odate.strftime("%Y-%m-%d") }.to_json.html_safe %>;
@@ -45,7 +45,8 @@
 </script>
 
 
-<%= form_tag report_by_category_reports_path, method: :get, class: "form-inline" do %>
+
+<%= form_tag report_by_dates_path, method: :get, class: "form-inline" do %>
   <div class="form-group">
     <%= label_tag :start_date, "Дата початку" %>
     <%= date_field_tag :start_date, @start_date.to_s, class: "form-control" %>
@@ -59,8 +60,7 @@
   <%= submit_tag "Згенерувати", class: "btn btn-primary" %>
 <% end %>
 
-
-<table class="table table-striped">
+<table>
   <thead>
     <tr>
       <th>Категорія</th>

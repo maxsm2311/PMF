@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "reports/report_by_category", to: "reports#report_by_category", as: "report_by_category_reports"
   resources :categories do
     resources :operations
+    delete 'operations/:id', to: 'operations#destroy'
   end 
 
   
