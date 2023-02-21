@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'reports/report_by_dates'
   get 'main/index'
   get 'report_by_dates', to: 'reports#report_by_dates'
+  get 'report_by_category', to: 'reports#report_by_category'
+  get "reports/report_by_category", to: "reports#report_by_category", as: "report_by_category_reports"
   resources :categories do
     resources :operations
   end 

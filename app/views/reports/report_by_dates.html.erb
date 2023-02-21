@@ -1,38 +1,82 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<h1>Report_by_dates</h1>
+<h1>Report by dates</h1>
 <canvas id="myChart" width="600" height="400"></canvas>
 <script>
-	const ctx = document.getElementById('myChart').getContext('2d');
-	const data = {
-  labels: <%= raw @date %>,
-  datasets: [{
-    label: 'My First Dataset',
-    data: <%= @amount %>,
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-    tension: 0.1
-  }]
-};
+  const dates = <%= @operations.map { |operation| operation.odate.strftime("%Y-%m-%d") }.to_json.html_safe %>;
+  const amounts = <%= @operations.map(&:amount).to_json.html_safe %>;
 
-const config = {
-  type: 'line',
-  data: data,
-	options: {
-		responsive: false
-	}
-};
-
-const myChart = new Chart(ctx, config);
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: dates,
+          datasets: [{
+              label: 'Сума операцій',
+              data: amounts,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
 </script>
 
 
-<%= form_tag report_by_dates_path, method: :get do %>
-  <%= label_tag :start_date, "Start date" %>
-  <%= text_field_tag :start_date, nil, type: 'date' %>
-  <%= label_tag :end_date, "End date" %>
-  <%= text_field_tag :end_date, nil, type: 'date' %>
-  <%= submit_tag "Generate report" %>
+<%= form_tag report_by_category_reports_path, method: :get, class: "form-inline" do %>
+  <div class="form-group">
+    <%= label_tag :start_date, "Дата початку" %>
+    <%= date_field_tag :start_date, @start_date.to_s, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :end_date, "Дата кінця" %>
+    <%= date_field_tag :end_date, @end_date.to_s, class: "form-control" %>
+  </div>
+
+  <%= submit_tag "Згенерувати", class: "btn btn-primary" %>
 <% end %>
 
 
-
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Категорія</th>
+      <th>Сума витрат</th>
+      <th>Дата</th>
+      <th>Опис</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= operation.category.name %></td>
+        <td><%= operation.amount %></td>
+        <td><%= operation.odate.strftime("%Y-%m-%d") %></td>
+        <td><%= operation.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

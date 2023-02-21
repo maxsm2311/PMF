@@ -1,10 +1,11 @@
-<h1>Reports#index</h1>
-
-
-<div class="button-container">
- 
-<form action="report_by_category" method="GET"><input type="submit" value="Report by category"><br>
-</form>
-<form action="report_by_dates" method="GET"><input type="submit" value="Report by dates"><br>
-</form>
+<h1>Reports</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Звіт за період</h3>
+    <%= link_to "Згенерувати", report_by_dates_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-sm-6">
+    <h3>Звіт по категоріях</h3>
+    <%= link_to "Згенерувати", report_by_category_path, class: "btn btn-primary" %>
+  </div>
 </div>
